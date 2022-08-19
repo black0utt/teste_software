@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import React from 'react';
-import {Result} from '../src/components/Result'
+// import { render, screen } from '@testing-library/react';
+// import React from 'react';
+// import {Result} from '../src/components/Result'
 
 describe('Google', () => {
   beforeAll(async () => {
@@ -22,7 +22,7 @@ describe('Título', () => {
   });
 });
 
-// describe('<OriginDeliveryArea/>', () => {
+// describe('<Result/>', () => {
 //   it('search the text: Esse sorteio é meramente ilustrativo', () => {
 //     render(<Result/>);
 
