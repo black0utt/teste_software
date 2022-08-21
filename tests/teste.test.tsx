@@ -102,27 +102,112 @@ describe('Validando rotas da aplicação!', () =>{
 
 
 
-//======= TESTE DE EXEMPLO QUE PODE SER UTIL CLICANDO COM PUPPETEER ================//
+// ======= TESTE DE EXEMPLO QUE PODE SER UTIL CLICANDO COM PUPPETEER ================//
 
-//const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer');
 
-// test('teste', async () => {
-//   const browser = await puppeteer.launch({ headless: false });
-//   const page = await browser.newPage();
+test('teste', async () => {
+  const browser = await puppeteer.launch({ headless: false });
+  const page = await browser.newPage();
 
-//   await page.goto('http://localhost:3000',{
-//     waitUntil: 'networkidle2',
-//   })
+  await page.goto('http://localhost:3000',{
+    waitUntil: 'networkidle2',
+  })
 
-//   setTimeout( async () => {
-//     await page.click('.dropdown')
-//     await page.click('button[aria-label="quina"]')
-//   }, 4000);
-// }, 6000);
+  setTimeout( async () => {
+    await page.click('.dropdown')
+    await page.click('button[aria-label="quina"]')
+  }, 4000);
+}, 6000);
 
 
 
 //================ PEGANDO VÁRIOS ELEMENTOS COM PUPPETER ===============//
 
-// await page.waitForSelector('div.ball')
-// let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
+const axios = require('axios')
+describe('Compara resultado do projeto com a api que ele consome', () =>{
+  beforeAll(async () => {
+    jest.setTimeout(30000)
+  });
+
+  test('A rota /0 deve ter o mesmo resultado da api referente ao jogo da Mega-sena.', async () =>{
+    const page = await browser.newPage();
+
+    await page.goto('http://localhost:3000/0');
+    await page.waitForSelector('div.ball')
+
+    let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
+      
+    //Compara o resultado do projeto com o resultado da api referente a Mega-sena
+    expect(values).toEqual(await axios.get("https://brainn-api-loterias.herokuapp.com/api/v1/concursos/2359")
+    .then(response => response.data.numeros));      
+  });
+
+  test('A rota /1 deve ter o mesmo resultado da api referente ao jogo da Quina.', async () =>{
+    const page = await browser.newPage();
+
+    await page.goto('http://localhost:3000/1');
+    await page.waitForSelector('div.ball')
+
+    let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
+      
+    //Compara o resultado do projeto com o resultado da api referente a Quina
+    expect(values).toEqual(await axios.get("https://brainn-api-loterias.herokuapp.com/api/v1/concursos/5534")
+    .then(response => response.data.numeros));      
+  });
+
+  test('A rota /2 deve ter o mesmo resultado da api referente ao jogo da Lotofácil.', async () =>{
+    const page = await browser.newPage();
+
+    await page.goto('http://localhost:3000/2');
+    await page.waitForSelector('div.ball');
+
+    let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
+      
+    //Compara o resultado do projeto com o resultado da api referente a Lotofácil
+    expect(values).toEqual(await axios.get("https://brainn-api-loterias.herokuapp.com/api/v1/concursos/2200")
+    .then(response => response.data.numeros));      
+  });
+
+  test('A rota /3 deve ter o mesmo resultado da api referente ao jogo da Lotomania.', async () =>{
+    const page = await browser.newPage();
+
+    await page.goto('http://localhost:3000/3');
+    await page.waitForSelector('div.ball');
+
+    let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
+      
+    //Compara o resultado do projeto com o resultado da api referente a Lotomania
+    expect(values).toEqual(await axios.get("https://brainn-api-loterias.herokuapp.com/api/v1/concursos/2167")
+    .then(response => response.data.numeros));      
+  });
+
+  test('A rota /4 deve ter o mesmo resultado da api referente ao jogo da TimeMania.', async () =>{
+    const page = await browser.newPage();
+
+    await page.goto('http://localhost:3000/4');
+    await page.waitForSelector('div.ball');
+
+    let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
+      
+    //Compara o resultado do projeto com o resultado da api referente a TimeMania
+    expect(values).toEqual(await axios.get("https://brainn-api-loterias.herokuapp.com/api/v1/concursos/1622")
+    .then(response => response.data.numeros));      
+  });
+
+  test('A rota /5 deve ter o mesmo resultado da api referente ao jogo do Dia de Sorte.', async () =>{
+    const page = await browser.newPage();
+
+    await page.goto('http://localhost:3000/5');
+    await page.waitForSelector('div.ball')
+
+    let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
+      
+    //Compara o resultado do projeto com o resultado da api referente ao Dia de Sorte
+    expect(values).toEqual(await axios.get("https://brainn-api-loterias.herokuapp.com/api/v1/concursos/440")
+    .then(response => response.data.numeros));      
+  }); 
+});
+
+
+
