@@ -209,5 +209,112 @@ describe('Compara resultado do projeto com a api que ele consome', () =>{
   }); 
 });
 
+describe('Verificar as páginas por meio de screenshot', () =>{
 
+  test('Verifica página da Mega Sena', async () => {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+  
+    await page.goto('http://localhost:3000',{
+      waitUntil: 'networkidle2',
+    })
+  
+    setTimeout( async () => {
+      await page.click('.dropdown')
+      await page.click('button[aria-label="mega-sena"]')
+      await page.screenshot({path: 'megasena.png'});
 
+    }, 4000);
+  }, 6000);
+
+  test('Verifica página da Quina', async () => {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+  
+    await page.goto('http://localhost:3000',{
+      waitUntil: 'networkidle2',
+    })
+  
+    setTimeout( async () => {
+      await page.click('.dropdown')
+      await page.click('button[aria-label="quina"]')
+      setTimeout( async () => {
+        await page.screenshot({path: 'quina.png'});
+      }, 2000);
+    }, 4000);
+
+  }, 6000);
+
+  test('Verifica página da Lotofácil', async () => {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+  
+    await page.goto('http://localhost:3000',{
+      waitUntil: 'networkidle2',
+    })
+  
+    setTimeout( async () => {
+      await page.click('.dropdown')
+      await page.click('button[aria-label="lotofácil"]')
+      setTimeout( async () => {
+        await page.screenshot({path: 'Lotofacil.png'});
+      }, 2000);
+    }, 4000);
+
+  }, 6000);
+
+  test('Verifica página da Lotomania', async () => {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+  
+    await page.goto('http://localhost:3000',{
+      waitUntil: 'networkidle2',
+    })
+  
+    setTimeout( async () => {
+      await page.click('.dropdown')
+      await page.click('button[aria-label="lotomania"]')
+      setTimeout( async () => {
+        await page.screenshot({path: 'Lotomania.png'});
+      }, 2000);
+    }, 4000);
+
+  }, 6000);
+
+  test('Verifica página do Timemania', async () => {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+  
+    await page.goto('http://localhost:3000',{
+      waitUntil: 'networkidle2',
+    })
+  
+    setTimeout( async () => {
+      await page.click('.dropdown')
+      await page.click('button[aria-label="timemania"]')
+      setTimeout( async () => {
+        await page.screenshot({path: 'Timemania.png'});
+      }, 2000);
+    }, 4000);
+
+  }, 6000);
+
+  test('Verifica página do Dia de Sorte', async () => {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+  
+    await page.goto('http://localhost:3000',{
+      waitUntil: 'networkidle2',
+    })
+  
+    setTimeout( async () => {
+      await page.click('.dropdown')
+      await page.click('button[aria-label="dia de sorte"]')
+      setTimeout( async () => {
+        await page.screenshot({path: 'DiaDeSorte.png'});
+      }, 2000);
+    }, 4000);
+
+  }, 6000);
+
+})
