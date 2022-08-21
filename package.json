@@ -72,5 +72,7 @@
   },
   "jest": {
     "preset": "jest-puppeteer"
+
   }
 }
+
