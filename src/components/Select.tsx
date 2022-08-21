@@ -32,7 +32,6 @@ export function Select(props: SelectProps) {
               <button
                 title="Opção de loteria"
                 aria-label={lottery.name}
-                id={lottery.name}
                 className="select-option-button"
                 onClick={() => goToLotterySelected(lottery.id)}
               >
