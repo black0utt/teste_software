@@ -208,33 +208,30 @@ const puppeteer = require('puppeteer');
   
 // })
 
+// const api = require("../src/services/api")
 
 describe('Validando números', () =>{
   beforeAll(async () => {
     jest.setTimeout(30000)
-    const browser = await puppeteer.launch();
-    return browser
+    // let data = await api.get(`concursos/2359`)
   })
   test('validando os números da primeira rota, mega sena.', async () =>{
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/0');
 
-    await page.waitForSelector('div.ball')
-    let element = await page.$$('div.ball')   
-    // let value = await page.evaluate(el => el[0]?.innerText, element)
-    let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
-    // let element = await page.$$('div.ball')   
-    // let value = await page.evaluate(el => el[0]?.innerText, element)
+    // await page.waitForSelector('div.ball')
+    // let values = await page.$$eval('div.ball', elems => elems.map(elem => elem.textContent))
+    // await supertest
+    // console.log(values)
+    
+    // expect(values).toContain('a')
+    // await page.close();
+    await page.waitForSelector('div.logo > span')
+    let element = await page.$('container-loading')   
+    let value = await page.evaluate(el => el?.textContent, element)
 
-    let pegandoNumeros = fetch("https://brainn-api-loterias.herokuapp.com/api/v1/concursos/2359").then(function(data) {
-        return data
-    });
-    
-    console.log(values)
-    console.log(pegandoNumeros)
-    
-    expect(values).toContain('a')
-    await page.close();
+    expect(value).toContain('quina')
+          
   });
   // test('validando a segunda rota, quina.', async () =>{
   //   const page = await browser.newPage();
