@@ -130,26 +130,36 @@ describe('Percorrendo as rotas', () =>{
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/0');
     await expect(page.url()).toContain('/0')
-    await page.close();
-    
-    
 
+    await page.waitForSelector('div.logo > span')
+    let element = await page.$('div.logo > span')   
+    let value = await page.evaluate(el => el?.textContent, element)
+    //o teste irá falhar caso o valor seja diferente de  quina
+    expect(value).toContain('mega-sena')
+    await page.close();
   });
   test('validando a segunda rota, quina.', async () =>{
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/1');
 
     await expect(page.url()).toContain('/1')
-
+    await page.waitForSelector('div.logo > span')
+    let element = await page.$('div.logo > span')   
+    let value = await page.evaluate(el => el?.textContent, element)
+    //o teste irá falhar caso o valor seja diferente de  quina
+    expect(value).toContain('quina')
     await page.close();
-
-
-
   });
   test('validando a terceira rota, LOTOFÁCIL.', async () =>{
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/2');
     await expect(page.url()).toContain('/2')
+
+    await page.waitForSelector('div.logo > span')
+    let element = await page.$('div.logo > span')   
+    let value = await page.evaluate(el => el?.textContent, element)
+    //o teste irá falhar caso o valor seja diferente de lotofácil
+    expect(value).toContain('lotofácil')
     await page.close();
 
   });
@@ -157,14 +167,26 @@ describe('Percorrendo as rotas', () =>{
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/3');
     await expect(page.url()).toContain('/3')
+
+    await page.waitForSelector('div.logo > span')
+    let element = await page.$('div.logo > span')   
+    let value = await page.evaluate(el => el?.textContent, element)
+    //o teste irá falhar caso o valor seja diferente de lotomania
+    expect(value).toContain('lotomania')
     await page.close();
 
 
   });
-  test('validando a quinta rota, LOTOMANIA.', async () =>{
+  test('validando a quinta rota, TIMEMANIA.', async () =>{
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/4');
     await expect(page.url()).toContain('/4')
+
+    await page.waitForSelector('div.logo > span')
+    let element = await page.$('div.logo > span')   
+    let value = await page.evaluate(el => el?.textContent, element)
+    //o teste irá falhar caso o valor seja diferente de timemania
+    expect(value).toContain('timemania')
     await page.close();
 
 
@@ -173,11 +195,16 @@ describe('Percorrendo as rotas', () =>{
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/5');
     await expect(page.url()).toContain('/5')
+
+    await page.waitForSelector('div.logo > span')
+    let element = await page.$('div.logo > span')   
+    let value = await page.evaluate(el => el?.textContent, element)
+    //o teste irá falhar caso o valor seja diferente de dia de sorte
+    expect(value).toContain('dia de sorte')
     await page.close();
 
 
   });
-  
   
 })
 
