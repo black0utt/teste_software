@@ -19,11 +19,13 @@
     "@types/node": "^18.7.9",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "autoprefixer": "^9",
     "axios": "^0.21.4",
     "craco": "^0.0.3",
     "daisyui": "^1.14.0",
     "jest": "26.6.0",
     "node-fetch": "^3.2.10",
+    "postcss": "^7",
     "puppeteer": "^16.1.1",
     "puppeteer-core": "^16.1.1",
     "react": "^17.0.2",
@@ -31,6 +33,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "sass": "^1.54.5",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
@@ -71,10 +74,7 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@types/react-router-dom": "^5.3.3",
-    "autoprefixer": "10.4.8",
     "jest-puppeteer": "^6.1.1",
-    "postcss": "8.4.16",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "ts-jest": "^28.0.8"
   },
   "jest": {
